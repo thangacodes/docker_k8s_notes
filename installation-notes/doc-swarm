@@ -29,9 +29,10 @@ If not use bootstrap scripts, while these provisioning time itself.
 # To add any worker node to this Swarm, run the following command:
 docker swarm join --token xyz...................33u6c:172.31.4.6:2377
 
-# Then will be remainig nides will be acting as slave ndes.
+# Then we need to copy the token and it to be executed in all worker nodes..
 
-# docker node ls
+# docker node ls   //list docker swarm cluster details
+
 
 
 
