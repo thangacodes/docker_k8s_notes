@@ -1,0 +1,37 @@
+Here are the instructions that we follow, inorder to create docker swarm cluster:-
+
+1) Have an AWS account (free tier -1 year students account)
+2) Go to EC2 service, spinup minimum 2-3 instances with similar spec
+Example, in my case am creating 3 EC2 instances with spec of t2.micro (will get 1vCPU/1Gig Mem)
+3) Post creations of EC2 instances, login them using ssh
+$ ssh ec2-user@public-ip or public-dns
+4) Install required plugin and settings to be install Docker on these instances. Following commands will be get executed on each systems. 
+If not use bootstrap scripts, while these provisioning time itself.
+
+
+    1  sudo yum update -y
+    2  sudo yum install docker -y
+    3  sudo systemctl start docker
+    4  sudo systemctl enable docker
+    5  sudo docker version
+
+# To avoid permission issue for 'ec2-user' what we are going to do is, just adding it to the docker/wheel groups in Linux OS
+    6  sudo chmod 666 /var/run/docker.sock
+    7  sudo usermod -aG docker ec2-user
+    8  sudo usermod -aG wheel ec2-user
+    9 docker version
+
+# To install Docker Swarm, you need to decide which EC2 instance will be electing as Master node.
+    10. Once you decided, login to the node that you wanted to be keep as Master node
+    11. $ ssh ec2-user@public-ip
+    12. $ docker swarm init
+
+# To add any worker node to this Swarm, run the following command:
+docker swarm join --token xyz...................33u6c:172.31.4.6:2377
+
+# Then will be remainig nides will be acting as slave ndes.
+
+# docker node ls
+
+
+
