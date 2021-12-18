@@ -1,0 +1,15 @@
+# How to make a node as master in Docker Swarm?
+
+Follow the instructions below,
+
+$ docker swarm init  --> initialize swarm
+
+#Note: you will a token, which needs to be copied and executed in all slave nodes,then only the slave nodes become as part of the swarm cluster
+
+$ docker swarm join-token manager -->Join tokens are secrets that allow a node to join the swarm
+
+$ docker node ls  --> will list out the slave nodes that are being part of the swarm orchestor
+
+# what are the commands to execute in slave nodes?
+
+$ docker swarm leave --> slave node will be leaving from swarm cluster
