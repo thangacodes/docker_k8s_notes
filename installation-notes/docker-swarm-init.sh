@@ -16,3 +16,5 @@ docker version
 # Once you decided, login to the node that you wanted to be keep as Master node
  
 docker swarm init
+
+exit 
