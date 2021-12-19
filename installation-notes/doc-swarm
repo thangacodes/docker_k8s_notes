@@ -27,7 +27,7 @@ If not use bootstrap scripts, while these provisioning time itself.
     12. $ docker swarm init
 
 # To add any worker node to this Swarm, run the following command:
-docker swarm join --token xyz...................33u6c:172.31.4.6:2377
+docker swarm join --token xxxxx:172.31.4.6:2377
 
 # Then we need to copy the token and it to be executed in all worker nodes..
 
