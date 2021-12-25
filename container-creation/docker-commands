@@ -19,3 +19,26 @@ NETWORK ID          NAME                DRIVER              SCOPE
 abdc8e695062        bridge              bridge              local
 890525629d13        host                host                local
 b861db7347a4        none                null                local
+
+By default, docker is having '3' types of networks. Those are,
+bridge,host,none.
+
+When you install Docker on linux/windows, where by default the docker0 device network will be created. See for your reference,
+
+3: docker0: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc noqueue state DOWN group default 
+    link/ether 02:42:d0:4a:f6:b9 brd ff:ff:ff:ff:ff:ff
+    inet 172.17.0.1/16 scope global docker0
+       valid_lft forever preferred_lft forever
+    inet6 fe80::42:d0ff:fe4a:f6b9/64 scope link 
+       valid_lft forever preferred_lft forever
+
+If you wanted to inspect each networks,
+$ docker network inspect bridge (the first ip from 172.17.0.1/16 will be assigned device0
+0
+$ docker network inspect host
+$ docker network inspect none
+
+How to create custom bridge network?
+$ docker network create --driver bridge demo_nw
+$ docker network ls
+$ docker network create --driver bridge --subnet 192.168.0.0/24 cust_nw
