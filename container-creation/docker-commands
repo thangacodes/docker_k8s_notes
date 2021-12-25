@@ -1,0 +1,14 @@
+# How to convert a docker container into a docker images?
+docker commit -p containerId  (running/stopped container id)
+
+How to take backup of commit images?
+docker save -o wordpress-back.tar.gz dockerimageId
+# ls 
+
+How to restore back the commit images?
+docker load -i wordpress-back.tar.gz
+docker images
+
+How to tag a docker images?
+docker tag imageid durai5050/httpd:v1.0
+docker images
