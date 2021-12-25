@@ -5,7 +5,7 @@ create database airlines;
 show databases;
 use airlines;
 show tables;
-create table saas (sno int, customername varchar(255),custid varchar(255),country varchar(255),language varchar(255),usersessions int );
+create table code(sno int, customername varchar(255),custid varchar(255),country varchar(255),language varchar(255),usersessions int );
 show tables;
 desc code;
 select * from code;
