@@ -12,3 +12,10 @@ docker images
 How to tag a docker images?
 docker tag imageid durai5050/httpd:v1.0
 docker images
+
+## Docker Networking:-
+[root@linux-practice anand]# docker network ls
+NETWORK ID          NAME                DRIVER              SCOPE
+abdc8e695062        bridge              bridge              local
+890525629d13        host                host                local
+b861db7347a4        none                null                local
