@@ -1,9 +1,8 @@
 #!/bin/bash
 
 echo "Simple Script to apply OR destory the infrastructure stack provisioned by Terraform(Iac)"
-sleep 2
-echo "Action,READY, STEDY, GO"
-sleep 5
+sleep 1
+echo " ********** <<ACTION>> <<START>> <<READY>> <<GO>> ***********"
 echo "Please enter 1 to initializing terraform to download the require plugins for the CLOUD PROVIDER"
 echo "Please enter 2 to format the code that we written in HCL"
 echo "Please enter 3 to validate the code that we written in HCL"
