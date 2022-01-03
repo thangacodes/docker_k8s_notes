@@ -37,9 +37,9 @@ minikube start --vm-driver=none
 sleep 5
 minikube status
 sleep 5
-echo -e "\033[1;31m" ******** BREAK *********"
-echo -e "\033[1;31m" ******** BREAK *********"
-echo -e "\033[1;31m" ******** BREAK *********"
+echo -e "\033[1;31m ******** BREAK ********* "
+echo -e "\033[1;31m ******** BREAK ********* "
+echo -e "\033[1;31m ******** BREAK ********* "
 echo -e "\033[0:32m ********* Just checking kubectl commands are working or not *********"
 kubectl get nodes -o wide
 sleep 3
