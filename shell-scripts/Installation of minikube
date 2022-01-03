@@ -1,8 +1,10 @@
-## Here is the step by step process to install minikube on Ubuntu or CentOS
+## Here is the step by step process to install minikube on CentOS
 
-1. Launch medium tier instance (t3a.medium - 2vCPU/4 Gig memory)
+1. Launch medium tier instance (t2.medium - 2vCPU/4Gig memory)
+$ sudo su -   // switching to root user
 
-2. Install kubectl
+2. Install kubectl:
+
 curl -o kubectl https://amazon-eks.s3.us-west-2.amazonaws.com/1.21.2/2021-07-05/bin/linux/amd64/kubectl
 chmod +x ./kubectl
 mkdir -p $HOME/bin && cp ./kubectl $HOME/bin/kubectl && export PATH=$PATH:$HOME/bin
@@ -10,12 +12,14 @@ kubectl version --short --client
 
 3. Install docker
 
-apt-get update -y
-apt-get install docker.io -y
+yum install -y docker
+systemctl start docker
+systemctl enable docker
 
 4. Install minikube
 
 curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+
 sudo install minikube-linux-amd64 /usr/local/bin/minikube
 
 5. minikube start --vm-driver=none
@@ -24,5 +28,14 @@ sudo install minikube-linux-amd64 /usr/local/bin/minikube
 6. a) yum install conntrack // for CentOS and RHELOS
 
 7. minikube status
-
 8. kubectl get nodes
+
+## Later you can execute all kubectl commands,
+$ kubectl get nodes
+$ kubectl get nodes -o wide
+$ kubectl get svc
+$ kubectl get ns
+$ kubectl get pods
+$ kubectl get pods -n kube-system
+$ kubectl get pods kube-apiserver-ip-172-31-42-53.ap-south-1.compute.internal -n kube-system
+$ kubectl describe pod etcd-ip-172-31-42-53.ap-south-1.compute.internal -n kube-system
