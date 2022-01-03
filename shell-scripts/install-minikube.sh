@@ -1,7 +1,4 @@
 #!/bin/bash
-#switching to root account
-sudo su -
-sleep 10
 whoami
 pwd
 sleep 1
@@ -11,15 +8,20 @@ curl -o kubectl https://amazon-eks.s3.us-west-2.amazonaws.com/1.21.2/2021-07-05/
 ls -lrth
 chmod +x ./kubectl
 mkdir -p $HOME/bin && cp ./kubectl $HOME/bin/kubectl && export PATH=$PATH:$HOME/bin
-kubectl version --short --clien
+kubectl version
 sleep 5
 # Install Docker
+echo "Installing Docker on Amazon Linux Machines"
 yum install -y docker
 systemctl start docker
 systemctl enable docker
+sleep 5
 # Install minikube
+echo "installing minikube on centOS"
 curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
-install minikube-linux-amd64 /usr/local/bin/minikube
+pwd
+ls -lrt
+sudo install minikube-linux-amd64 /usr/local/bin/minikube
 minikube start --vm-driver=none
 sleep 5
 yum install conntrack -y
@@ -27,6 +29,7 @@ sleep 10
 minikube status
 
 # kubectl commands checking
+echo "checking the kubectl commands"
 kubectl get nodes
 kubectl get nodes -o wide
 kubectl get svc
