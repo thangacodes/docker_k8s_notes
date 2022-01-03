@@ -39,3 +39,8 @@ $ kubectl get pods
 $ kubectl get pods -n kube-system
 $ kubectl get pods kube-apiserver-ip-172-31-42-53.ap-south-1.compute.internal -n kube-system
 $ kubectl describe pod etcd-ip-172-31-42-53.ap-south-1.compute.internal -n kube-system
+
+## If you wanted to know about any object in kubernetes workd, execute command below and see the informative data's.
+ $ kubectl api-resources
+ $ kubectl explain ns  // it's manual page about namespace
+ $ kubectl explain pods // it's manaual page about pods
