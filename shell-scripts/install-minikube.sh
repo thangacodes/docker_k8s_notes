@@ -1,9 +1,7 @@
-#!/bin/bash
-whoami
 pwd
 sleep 1
 # Updating yum repository
-echo -e "\033[0;32m ***** Updating yum repostory ******"
+echo -e "\033[0;32m ********* Updating YUM REPOSITORY *********"
 yum update -y
 sleep 10
 # downloading kubectl from aws s3 bucket to local
@@ -12,6 +10,8 @@ curl -o kubectl https://amazon-eks.s3.us-west-2.amazonaws.com/1.21.2/2021-07-05/
 ls -lrth
 chmod +x ./kubectl
 mkdir -p $HOME/bin && cp ./kubectl $HOME/bin/kubectl && export PATH=$PATH:$HOME/bin
+sleep 5
+echo -e "\033[1;31m ********* Minikube version checking *******"
 kubectl version
 sleep 5
 # Install Docker
@@ -35,19 +35,22 @@ sleep 5
 echo -e "\033[0;32m ****** Going to start minikube on amazon linux machine ********"
 minikube start --vm-driver=none
 sleep 5
+echo -e "\033[1;31m ******** MINIKUBE STATUS CHECKING ********* "
 minikube status
 sleep 5
 echo -e "\033[1;31m ******** BREAK ********* "
+sleep 3
 echo -e "\033[1;31m ******** BREAK ********* "
+sleep 2
 echo -e "\033[1;31m ******** BREAK ********* "
+sleep 2
 echo -e "\033[0:32m ********* Just checking kubectl commands are working or not *********"
 kubectl get nodes -o wide
 sleep 3
-kubectl get svc 
+kubectl get svc
 sleep 3
 kubectl get ns
 sleep 3
 kubectl cluster-info
 sleep 3
 exit
-
