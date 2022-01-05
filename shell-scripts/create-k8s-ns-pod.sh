@@ -8,8 +8,8 @@ kubectl create ns $NS
 echo "Going to see namespace is created or not:"
 kubectl get ns
 sleep 2
-read -p "Enter the Pod Path:" PODPATH
-echo -e "you entered name is : $PODPATH"
+read -p "Enter the YAML file Path:" YAMLPATH
+echo -e "you entered name is : $YAMLPATH"
 sleep 2
 kubectl apply -f $PODPATH
 sleep 3
