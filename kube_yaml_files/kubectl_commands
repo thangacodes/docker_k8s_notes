@@ -20,3 +20,6 @@ kubectl cluster-info dumps
 kubectl cluster-info
 kubectl get pods podname -n nsname
 kubectl describe pods podname -n nsname
+kubectl exec  -n development -it devpod -- /bin/bash
+kubectl exec  -n development -it devpod /bin/bash
+
