@@ -1,0 +1,22 @@
+## Following kubectl commands have been executed each and every time.
+
+kubectl get nodes
+kubectl get nodes -o wide
+kubectl version
+kubectl get pods
+kubectl get ns
+kubectl apply -f xy.yaml
+kubectl delete -f xy.yaml
+kubectl describe pods
+kubectl describe pods xyz -n abc
+kubectl explain namespace
+kubectl explain pod
+kubectl get api-resources
+kubectl create pod devpod
+kubectl delete pod devpod
+kubect create ns dev
+kubectl delte ns dev
+kubectl cluster-info dumps
+kubectl cluster-info
+kubectl get pods podname -n nsname
+kubectl describe pods podname -n nsname
