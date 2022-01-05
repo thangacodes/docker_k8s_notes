@@ -1,0 +1,17 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: dev-pod
+  namespace: development
+spec:
+  containers:
+    - name: nginx-container
+      image: nginx:1.18
+      ports:
+        - containerPort: 80
+    - name: httpd-container
+      image: httpd:2.4.52
+      ports:
+        - containerPort: 90
+...
