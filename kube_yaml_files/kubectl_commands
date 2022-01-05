@@ -11,11 +11,11 @@ kubectl describe pods
 kubectl describe pods xyz -n abc
 kubectl explain namespace
 kubectl explain pod
-kubectl get api-resources
+kubectl api-resources
 kubectl create pod devpod
 kubectl delete pod devpod
 kubect create ns dev
-kubectl delte ns dev
+kubectl delete ns dev
 kubectl cluster-info dumps
 kubectl cluster-info
 kubectl get pods podname -n nsname
