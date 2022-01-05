@@ -1,7 +1,7 @@
 # Script to check on kubernetes admin systems that the require packages installed or not.
 # This script is mainly designed to check the package version that are required to configure and access Amazon Elastic Kubernetes Service (Amazon EKS)
 
-#Package lists:-
+## Package lists are
 #kubectl
 #aws-iam-authenticator
 #eksctl
@@ -32,3 +32,4 @@ echo -e "\033[0:32m awscli version is below"
 aws  --version
 
 exit
+
