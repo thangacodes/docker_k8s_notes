@@ -22,4 +22,6 @@ kubectl get pods podname -n nsname
 kubectl describe pods podname -n nsname
 kubectl exec -n development -it devpod -- /bin/bash   ##(-n --> namespace, podname -devpod)
 kubectl exec -n development -it devpod /bin/bash
-
+kubectl describe pods -n development | grep -i 'container'
+kubectl exec -n development -it pods devpod -c jenkins-container -- bin/bash
+kubectl exec -n development -it devpod -c nginx-container -- bin/bash
