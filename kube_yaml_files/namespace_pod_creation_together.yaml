@@ -22,3 +22,5 @@ ports:
 image: httpd:2.4.52
 ports:
 - containerPort: 9090
+
+## Note: After Namespace instruction, we need to give '---' (3 dash). Then you can start of yours.
