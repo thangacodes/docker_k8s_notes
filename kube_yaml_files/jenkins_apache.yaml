@@ -1,0 +1,30 @@
+## This is going to be create for jenkins and apache container in a Pod
+
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: crewaccess
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: crewpod
+  namespace: crewaccess
+spec:
+  containers:
+    - name: cicd
+      image: jenkins:2.60.3
+      ports:
+        - containerPort: 8080
+    - name: web
+      image: httpd:2.4.52
+      ports:
+        - containerPort: 80
+
+## Note, please execute following kubectl commands to create namespace and Pod.
+# kubectl create -f jenkins_apache.yaml  // To create namespace and Pod using manifest file
+# kubectl get ns  // List out all namespace
+# kubect get pods crewpod -n crewaccess  // To see the pod with container information using crewpod namespace
+# kubectl describe -n crewaccess -it crewpod -c cicd -- /bin/bash  // To get in jenkins container
+# kubectl describe -n crewaccess -it crewpod -c web -- /bin/bash   // To get in web container
