@@ -1,0 +1,16 @@
+## LoadBalancer yaml file
+========================================
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: service-elb
+  namespace: dev
+spec:
+  selector:
+   app: web
+  type: LoadBalancer
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 80
