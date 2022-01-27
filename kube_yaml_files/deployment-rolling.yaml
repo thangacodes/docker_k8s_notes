@@ -1,0 +1,31 @@
+### Rolling deployment yaml file
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+  namespace: dev
+  labels:
+    env: dev
+    application: webserver
+    app: web
+spec:
+  replicas: 5
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+       maxSurge: 1
+       maxUnavailable: 1
+  selector:
+    matchLabels:
+       app: web
+  template:
+    metadata:
+      labels:
+        app: web
+    spec:
+      containers:
+        - name: nginx-webserver
+          image: nginx:1.17
+          ports:
+            - containerPort: 80
