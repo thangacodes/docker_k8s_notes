@@ -1,0 +1,127 @@
+Kubernest Serivces withe examples:
+
+1.Container to container communication
+2. Pod to Pod communication
+   * Intra-node Pod Network
+   * Inter-node Pod Network
+3. Pod to Service Communication
+4. External-to-Service communications
+     * ClusterIP  ==> Local Kubernetes kube-DNS
+     * NodePort   ==> WorkerNodeIP:32000
+     * LoadBalancer ==> Cloud Provider ELB
+     * ExternalName ==> DNS CNAME Record
+
+A service can be defined in .yaml or .json file like all other kubernetes objects.
+
+ClusterIP:-
+ It's a default one, which is used for internal communication within the kubernetes cluster. But not to the external traffic. 
+ It's very useful, when	you plan to have backend services, then you can use this for clusterIp service for your backend Pod.	
+
+Example for clusterIp manifest file
+-----------------------------------
+vim service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: app1-svc
+  namespace: cert
+spec:
+  selector:
+    environment: devel
+    app: app1
+  type: ClusterIP
+  ports:
+  - port: 8080
+    targetPort: 80
+...
+
+$ Kubectl get svc  // this will shows default cluster IP
+$ kubectl apply -f service.yaml
+$ kubectl get svc -n cert
+$ kubectl port-forward service/app1-svc 8080:8080
+$ curl 127.0.0.1:8080
+
+
+## Note: ClusterIp is best to usecase, when you don't want to expose the PODS to outside as well as you want to access it within the cluster.
+
+
+II) NodePort:
+================
+The NodePort type expose your POD to external network with the same target port. The user can access it using the workernode IP and the port it's exposed.
+The user would be able to access and the traffic will be sent to the respective pods through the service.
+
+example:
+# vim nodeport.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: app1-np
+  namespace: cert
+spec:
+  selector:
+    environment: develop
+    app: app1
+  type: NodePort
+  ports:
+  - port: 8080
+    targetPort: 80
+...
+
+# kubectl apply -f nodeport.yaml
+# kubectl get svc
+
+do you see the some random port number, which is assigned by the kubernetes b/w 30000 to 32737.
+
+If you want to specific port, then you could specify it in the nodeport.yaml file.
+
+# kubectl get pods -o wide 
+
+You can access your pod using the workernode IP along with the port that is exposed.
+
+192.168.151.50:30350
+
+At this stage, we are able to access our pods from outside kubernetes cluster using the workernode Ip, 
+where the pod is running with the port number 80 is exposed.
+
+
+III) LoadBalancer:-
+=====================
+
+K8's itself provided by a service type called Loadbalancer. This can be used, when we have more than 10 number of worker-nodes,
+
+To configure loadbalancer, we need to user cloud like AWS,GCP, Azure and then the cloud provider will provide us an endpoint link,
+
+using which we can access our application configured in container.
+
+IV) External-Name:
+====================
+# vim externalname.yaml
+apiVersion: v1
+kind: Service
+metadata: v1
+  name: mongo
+  namespace: cert
+spec:
+  type: ExternalName
+  externalName: mongoserver1.learitguid.net
+...
+
+# kubectl apply -f externalname.yaml
+# kubectl get svc -n cert
+# kubectl get pod -n cert
+
+###########################################################################
+Kubernetes Networking Concepts:-
+===============================
+How it helps for the commn.and it's types:
+1. Container to container communication
+2. Pod to Pod communication
+      * Intra-node Pod Network
+      * Inter-node Pod Network
+ 3. Pod to Service Communication
+ 
+ 
+ 
+ 
+ 
+ 
