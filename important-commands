@@ -1,3 +1,4 @@
 In-order to connect AWS EKS worker nodes
 
 # aws eks --region ap-south-1 update-kubeconfig --name dev-lup-cluster
+# eksctl create cluster demo-eks --region ap-south-1
