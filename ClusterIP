@@ -19,3 +19,15 @@ Following Commands to apply inorder to creat nginx pod and expose the service vi
 # kubectl get pod -o wide
 # kubectl describe pod firstpod
 # kubectl expose pod firstpod --port=8000 --target-port=80 --name myfirstservice   // This is also a way to expose our service using ClusterIP method.
+root@minikube:~/pod-yaml# kubectl get svc
+
+NAME         TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)    AGE
+kubernetes   ClusterIP   10.96.0.1        <none>        443/TCP    24m
+mysvc        ClusterIP   10.106.229.235   <none>        8000/TCP   106s
+
+root@minikube:~/pod-yaml# curl 10.106.229.235:8000
+
+Will get a response from the pod
+
+root@minikube:~/pod-yaml# kubectl delete svc mysvc
+service "mysvc" deleted
