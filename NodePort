@@ -1,0 +1,29 @@
+// This page shows you, how to create NodePort svc exposing and how to access the nginx pod externally?
+
+root@minikube:~/pod-yaml# cat gauravpod.yml
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    podname: mypodlbl
+  name: firstpod
+spec:
+  containers:
+  - image: coolgourav147/nginx-custom
+    name: mypod
+...
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+# kubectl apply -f gauravpod.yml
+# kubectl get pod -o wide
+# kubectl describe pod firstpod
+# kubectl expost pod firstpod --type=NodePort --port=8000 --target-port=80 --name mynodesvc
+# kubectl get svc
+root@minikube:~/pod-yaml# kubectl get svc
+NAME          TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)          AGE
+kubernetes    ClusterIP   10.96.0.1       <none>        443/TCP          47m
+myfirstsvc1   NodePort    10.98.110.228   <none>        8000:31758/TCP   3s
+root@minikube:~/pod-yaml#
+
+## Note: Go to the browser, just try to access the nodeIP with port as dynamic one 
+http://10.103.202.89:30218/     # you will get a response from the browsers with some static html page.
+# kubectl delete svc myfirstsvc1
