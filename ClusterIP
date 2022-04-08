@@ -1,0 +1,21 @@
+// This is the page shows to how to create clusterIp and pod.
+
+# Simple pod yaml definition
+root@minikube:~/pod-yaml# cat gauravpod.yml
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    podname: mypodlbl
+  name: firstpod
+spec:
+  containers:
+  - image: coolgourav147/nginx-custom
+    name: mypod
+
+Following Commands to apply inorder to creat nginx pod and expose the service via CLI
+# kubectl get svc
+# kubectl apply -f gouravpod.yml
+# kubectl get pod -o wide
+# kubectl describe pod firstpod
+# kubectl expose pod firstpod --port=8000 --target-port=80 --name myfirstservice   // This is also a way to expose our service using ClusterIP method.
