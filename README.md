@@ -6,6 +6,10 @@ How to create a simple MySql query script?
 
 Kubernetes manifests file 
 
-ClusterIP concept detailed updated
+ClusterIP concept detailed updation
 
-NodePort concept detaild updated
+NodePort concept detailed updation
+
+Load balancer concept detailed updation
+
+Persistent volume and Persistent volume claim concepts
