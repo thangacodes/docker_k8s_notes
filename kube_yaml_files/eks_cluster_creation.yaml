@@ -5,6 +5,7 @@ metadata:
   region: ap-south-1
   version: "1.21"
 vpc:
+  id: vpc-71c2281a
   subnets:
     public:
       ap-south-1a: { id:subnet-e9190a81 }
@@ -15,7 +16,7 @@ managedNodeGroups:
     maxSize: 2
     desiredCapacity: 2
     instanceType: t2.small
-    labels: {role: dev.eks-workernode.role }
+    labels: { role: dev.eks-workernode.role }
     ssh:
       publicKeyName: admin
     tags:
@@ -25,3 +26,5 @@ managedNodeGroups:
         externalDNS: true
         certManager: true
         albIngress: true
+
+## eksctl create cluster -f xyz.yml
