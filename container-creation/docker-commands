@@ -1,3 +1,15 @@
+# There is an EC2 instance running with 6 docker containers in it.If a particular situation the ec2 instance will get restarted? What will happen to the containers? 
+Will it get restarted too?
+
+Ans: BY default NO.
+
+If container also get restarted along with EC2 instance reboot, you need to start the docker container like below
+
+# docker run --restart=always <image_name>
+# docker run --restart=always ubunutu                   // When you spin up a container like this, it will get restarted too.
+# docker run --restart=always my_image
+
+
 # How to convert a docker container into a docker images?
 docker commit -p containerId  (running/stopped container id)
 
