@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myapp
+  namespace: dev
+spec:
+  selector:
+    matchLabels:
+      app: myapp
+  template:
+    metadata:
+      labels:
+        app: myapp
+    spec:
+      containers:
+      - name: myapp
+        image: k8s.gcr.io/hpa-example
+        resources:
+          limits:
+            memory: "250Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 80
+...
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: myapp
+  namespace: dev
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: myapp
+  minReplicas: 1
+  maxReplicas: 10
+  targetCPUUtilizationPercentage: 50
