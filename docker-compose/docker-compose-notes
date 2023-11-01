@@ -1,0 +1,14 @@
+How to convert running docker container to docker images?
+
+# docker container commit -a "durai5050" -m "changed default nginx welcome message to custom" 2650375a2f06 durai5050/myweb  // -a --> denotes author name, -m-message
+# docker tag 23fe8118d9dd durai5050/mywebnginx   //tagging the locally available docker image based on our needs
+
+In order to run docker-compose yml file, please follow the steps below.
+
+# docker-compose up -d      //bringing the containers in detach mode
+# docker-compose ps        //to see running container status
+# docker-compose stop     //to stop running container
+# docker-compose down    //to stop/remove the docker container
+
+
+
