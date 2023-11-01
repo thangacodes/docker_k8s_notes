@@ -9,6 +9,7 @@ In order to run docker-compose yml file, please follow the steps below.
 # docker-compose ps        //to see running container status
 # docker-compose stop     //to stop running container
 # docker-compose down    //to stop/remove the docker container
+# docker images         //to list docker images
 
 
 
