@@ -1,0 +1,12 @@
+version: "3"
+services:
+  website1:
+    image: durai5050/mywebnginx
+    ports:
+      - "8082:80"
+    restart: always
+  website2:
+    image: durai5050/mywebnginx
+    ports:
+      - "8083:80"
+    restart: always
