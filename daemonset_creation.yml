@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: ds-example
+spec:
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels: 
+        app: nginx
+    spec:
+      containers:
+      - name: cont1
+        image: httpd 
+---
+
+# kubectl apply -f daemonset_creation.yml          // To create daemonset
+# kubectl get pods                                // To list out total pods
+# kubectl get pods -o wide                       // To check the replicaset where it's associated (i.e) on which worker nodes it's associated.
+# kubectl get daemonset                         // To list out DS
+# kubectl get pods -o wide                     // To check the daemonset where it's associated (i.e) on which worker nodes it's tied up
+# kubectl delete daemonset ds-example         // To delete daemonset
+# kubect get pods                            // To list out pods
+# kubectl delete pods pod1 new-pod          // deleting multiple pods at a time
+# kubectl delete namespaces dev test       // deleting multiple namespaces at a time.

@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: ReplicatSet
+metadata:
+  name: rs-example
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels: 
+        app: nginx
+    spec:
+      containers:
+      - name: cont1
+        image: httpd 
+---
+
+## Commands to be executed.
+
+# kubectl apply -f replicaset_creation.yml       // To create replicaset
+# kubectl get replicaset                        // To list out RS
+# kubectl get pods                             // To list out total pods
+# kubectl get pods -o wide                    // To check the replicaset where it's associated (i.e) on which worker nodes it's tied up
+# kubectl delete replicaset rs-example       // To delete replicaset
