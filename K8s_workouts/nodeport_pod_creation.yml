@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nodeport-pod
+  labels:
+    app: my_httpd_pod
+spec:
+  containers:
+  - name: cont1 
+    image: httpd
+    ports:
+      - containerPort: 80
+---
+
+## Commands to be executed:
+
+# kubectl apply -f nodeport_pod_creation.yml
+# kubectl get pod
+# kubectl get pod -o wide
