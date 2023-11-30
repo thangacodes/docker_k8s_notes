@@ -1,0 +1,65 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: my-devpv
+spec:
+  capacity:
+    storage: 1Gi
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: /tmp/data
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: my-devclaim
+spec:
+  resources:
+    requests:
+      storage: 500Mi
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteOnce
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: myapp
+  labels:
+    name: myapp
+spec:
+  containers:
+  - name: apache-container
+    image: httpd
+    resources:
+      limits:
+        memory: "128Mi"
+        cpu: "500m"
+    ports:
+      - containerPort: 80
+    volumeMounts:
+    - mountPath: "/var/www/html"
+      name: myapp
+  volumes:
+    - name: myapp
+      persistentVolumeClaim:
+        claimName: my-devclaim
+--- 
+### Command need to be executed:-
+# kubectl apply -f persistent_volume_create.yml       // Creating PV using manifest file
+# kubectl get pv                                     // To see the list of pv in the cluster
+# kubectl get pvc                                   // To see the list of claims
+# kubectl get pods                                 // To see the list of pods
+# kubectl get pods -o wide                        // To see the wider information of a pod 
+# kubectl get pv                                  // To see the volume status from the command output
+
+### Please remember the concept relevant to Persistent volume
+# Kubernetes supports three kinds of access modes for PVs:
+a) ReadWriteOnce -RWO
+b) ReadOnlyMany  -ROM
+c) WriteOnlyMany -WOM
+# PersistentVolumes can have various reclaim policies, including "Retain", "Recycle", and "Delete".
+# For dynamically provisioned PersistentVolumes, the default reclaim policy is "Delete". 
+# This means that a dynamically provisioned volume is automatically deleted when a user deletes the corresponding PersistentVolumeClaim
