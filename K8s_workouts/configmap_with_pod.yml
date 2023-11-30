@@ -27,6 +27,7 @@ spec:
 ---
 
 ### Commands to be executed inorder to provision configmap with pods
-# kubectl apply -f ConfigMap.yml              // To create configmap with pod using manifest file
+# kubectl apply -f ConfigMap.yml               // To create configmap with pod using manifest file
+# kubectl get configmaps                      //  To list out the configmap exist on the system
 # kubectl get pods                           // To list out the pods details
 # kubectl exec -it confmap-pod -- printenv  // To check the environment variables that we set it via configmap to the containers.
