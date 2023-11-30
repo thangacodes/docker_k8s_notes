@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: env_var_demo
+  labels:
+    name: env_vars_pod
+spec:
+  containers:
+  - name: env_var_container
+    image: nginx
+    resources:
+      limits:
+        memory: "128Mi"
+        cpu: "500m"
+    ports:
+      - containerPort: 80
+    env:
+    - name: DEMO GREETINGS
+      value: "Hello from the Environment Pod"
+---
+
+## Commands to be executed inorder to provision the pod:
+
+# kubectl apply -f env_variables.ym             // To create pod using manifest file
+# kubectl get pods                             // To list out the pod details
+# kubectl exec -it env_var_demo /bin/bash     // To get into the pod using (env_var_demo- is a pod name)
+# root@ip-172-31-17-213:~# printenv          // It will list out the system env variables
+# kubectl exec -it env_var_demo -- printenv // Without entering into the pod, we can see env_variable that is set on a pod
