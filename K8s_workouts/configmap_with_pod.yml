@@ -1,0 +1,32 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: dev-configmap
+data:
+  TERRAFORM: "It's an Infra as Code Tool from Hashicorp"
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: confmap-pod
+  labels:
+    name: myapp-cfmap
+spec:
+  containers:
+  - name: myapp-cfmap
+    image: httpd
+    resources:
+      limits:
+        memory: "128Mi"
+        cpu: "500m"
+    ports:
+      - containerPort: 80
+    envFrom:
+    - configMapRef:
+        name: dev-configmap
+---
+
+### Commands to be executed inorder to provision configmap with pods
+# kubectl apply -f ConfigMap.yml              // To create configmap with pod using manifest file
+# kubectl get pods                           // To list out the pods details
+# kubectl exec -it confmap-pod -- printenv  // To check the environment variables that we set it via configmap to the containers.
