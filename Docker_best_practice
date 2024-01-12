@@ -1,0 +1,5 @@
+### Best Practices for Securing Docker Containers:
+
+a) Non-Root user
+b) Read-Only Volumes and
+c) Resource Sharing
