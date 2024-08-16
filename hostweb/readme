@@ -1,0 +1,9 @@
+Docker commands:-
+==================
+docker build -t pweb .
+docker images
+docker run -dit --name myapp -p 80:80 pweb
+docker ps
+docker stop <CONTAINER_ID>
+docker container prune
+docker rmi pweb
