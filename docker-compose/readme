@@ -1,4 +1,4 @@
-How to convert running docker container to docker images?
+How to convert running docker container to docker image?
 
 # docker container commit -a "durai5050" -m "changed default nginx welcome message to custom" 2650375a2f06 durai5050/myweb
 # -a => denotes authorname, 
