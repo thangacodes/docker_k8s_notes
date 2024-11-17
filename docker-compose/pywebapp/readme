@@ -1,0 +1,21 @@
+
+This is a web development project using the Python Django framework, with a Postgres database as the backend service.
+
+The main goal is that when you visit the project app URL in browsers like Chrome, Edge, or Safari. 
+It will display the 'default' page along with some of the records from the tables we created using the entrypoint method in the docker-compose.yaml file.
+
+http://localhost:5000/
+http://localhost:5000/dynamic
+
+# Project Folder structure
+.
+├── Dockerfile
+├── app
+│   ├── __init__.py
+│   ├── app.py
+│   └── requirements.txt
+├── dc-exec.sh
+├── docker-compose.yaml
+└── init.sql
+
+2 directories, 7 files
