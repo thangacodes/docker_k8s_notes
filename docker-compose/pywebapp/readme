@@ -14,13 +14,17 @@ http://localhost:5000/dynamic
 │   ├── __init__.py
 │   ├── app.py
 │   └── requirements.txt
-├── dc-exec.sh
+├── docker-compose-down.sh
+├── docker-compose.sh
 ├── docker-compose.yaml
 └── init.sql
 
 2 directories, 7 files
 
 # Execution:
+
+$ sh docker-compose.sh       //To create a Docker image and start by creating the network and containers based on the docker-compose.yaml file that we defined.
+$ sh docker-compose-down.sh //To stop and remove all the containers, networks, and volumes created by the docker-compose up command and docker images as well.
 
 These are the commands you need to execute manually.
 
