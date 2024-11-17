@@ -19,3 +19,20 @@ http://localhost:5000/dynamic
 └── init.sql
 
 2 directories, 7 files
+
+# Execution:
+
+These are the commands you need to execute manually.
+
+docker build -t myweb .   //Building a Docker image and tagging it as myweb
+docker-compose up        //It is used to start and run all the services defined in a docker-compose.yml file
+docker-compose down     //It is used to stop and remove all the containers, networks, and volumes created by the docker-compose up command
+
+To log in to the Docker container use,
+docker exec -it <container id> /bin/bash
+
+For example, we need to login and do the debug on it, please follow the commands,
+docker exec -it 53b /bin/bash
+root# psql -U user testdb
+
+
