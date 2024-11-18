@@ -42,41 +42,47 @@ def dynamic():
         # If no records found in any of the tables, show a message
         if not employee_id_records and not employee_name_records and not devops_tools_records:
             return "<h3>No records found in the tables.</h3>"
-
+        
         # Create the HTML table to display records
         table_html = '''
         <style>
-            table { width: 80%; margin: 20px auto; border-collapse: collapse; }
-            th, td { padding: 8px 12px; text-align: left; border: 1px solid #ddd; }
+            table { width: 50%; margin: 8px auto; border-collapse: collapse; }
+            th, td { padding: 4px 6px; text-align: left; border: 1px solid #ddd; }
             th { background-color: #f2f2f2; }
             tr:nth-child(even) { background-color: #f9f9f9; }
         </style>
-        <h2>Employee ID Records</h2>
+
+        <h2>Employee ID</h2>
         <table>
             <tr><th>ID</th><th>Employee ID</th></tr>
         '''
+
         # Add rows for employee_id_records
         for record in employee_id_records:
             table_html += f'<tr><td>{record[0]}</td><td>{record[1]}</td></tr>'
 
         table_html += '</table>'
 
+        # Add heading for Employee Name and table
         table_html += '''
-        <h2>Employee Name Records</h2>
+        <h2>Employee Name</h2>
         <table>
             <tr><th>ID</th><th>Employee Name</th></tr>
         '''
+
         # Add rows for employee_name_records
         for record in employee_name_records:
             table_html += f'<tr><td>{record[0]}</td><td>{record[1]}</td></tr>'
 
         table_html += '</table>'
 
+        # Add heading for DevOps Tools and table
         table_html += '''
-        <h2>DevOps Tools Records</h2>
+        <h2>DevOps Tools</h2>
         <table>
             <tr><th>ID</th><th>Tool Name</th></tr>
         '''
+
         # Add rows for devops_tools_records
         for record in devops_tools_records:
             table_html += f'<tr><td>{record[0]}</td><td>{record[1]}</td></tr>'
