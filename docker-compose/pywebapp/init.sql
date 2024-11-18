@@ -2,16 +2,32 @@
 -- Create tables called employee_id and employee_name
 -- Insert values into the respective tables employee_id and employee_name
 
+CREATE TABLE IF NOT EXISTS devops_tools (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(50) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
 CREATE TABLE IF NOT EXISTS employee_id (
     id SERIAL PRIMARY KEY,
-    name VARCHAR(255) NOT NULL,
+    name VARCHAR(50) NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 CREATE TABLE IF NOT EXISTS employee_name (
     id SERIAL PRIMARY KEY,
-    name VARCHAR(255) NOT NULL,
+    name VARCHAR(50) NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+INSERT INTO devops_tools (name) 
+VALUES ('git'),
+       ('cicd'), 
+       ('jenkins'), 
+       ('ansible'),
+       ('docker'),
+       ('kubernetes'), 
+       ('terraform'),
+       ('linux-os'), 
+       ('windows-os');
 
 INSERT INTO employee_id (name) 
 VALUES ('1000'),
@@ -22,12 +38,12 @@ VALUES ('1000'),
 
 INSERT INTO employee_name (name) 
 VALUES ('anvi'),
-       ('chris'), 
+       ('chris'),
+       ('rebacca'),
        ('sudhir'), 
        ('webster'), 
        ('vedhiksha');
 
-## SELECT query to confirm whether any rows with data exist or not.
-  
 -- SELECT * FROM employee_name;
 -- SELECT * FROM employee_id;
+-- SELECT * FROM devops_tools;
