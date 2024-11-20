@@ -2,16 +2,19 @@
 
 echo "Script executed at: $(date +'%Y-%m-%d::%H-%M-%S')"
 
+#variable
+image_name="pyweb"
+
 # Check if the Docker image pyweb already exists
-IMAGE_EXISTS=$(docker images -q pyweb)
+IMAGE_EXISTS=$(docker images -q "${image_name}")
 
 if [ -z "$IMAGE_EXISTS" ]; then
     # If the image does not exist, build it
-    echo "Image pyweb not found. Building the image..."
-    docker build -t pyweb .
+    echo "Image "${image_name}" not found. Building the "${image_name}" image..."
+    docker build -t "${image_name}" .
 else
     # If the image exists, rebuild the web service using docker-compose
-    echo "Image pyweb exists. Rebuilding the web service..."
+    echo "Image "${image_name}" exists. Rebuilding the web service..."
     docker-compose build web
 fi
 
