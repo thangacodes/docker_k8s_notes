@@ -1,6 +1,6 @@
 -- init.sql
--- Create tables called employee_id and employee_name
--- Insert values into the respective tables employee_id and employee_name
+-- Create tables called devops_tools, employee_id and employee_name
+-- Insert values into the respective tables devops_tools, employee_id and employee_name
 
 CREATE TABLE IF NOT EXISTS devops_tools (
     id SERIAL PRIMARY KEY,
@@ -44,6 +44,7 @@ VALUES ('anvi'),
        ('webster'), 
        ('vedhiksha');
 
+-- SELECT * FROM devops_tools;
 -- SELECT * FROM employee_name;
 -- SELECT * FROM employee_id;
--- SELECT * FROM devops_tools;
+
