@@ -1,0 +1,29 @@
+# Use an official base image, e.g., Ubuntu
+FROM ubuntu:20.04
+
+# Set environment variables to non-interactive (to prevent some prompts during package installation)
+ENV DEBIAN_FRONTEND=noninteractive
+
+# Install cron and other necessary utilities
+RUN apt-get update && apt-get install -y \
+    cron \
+    curl \
+    && rm -rf /var/lib/apt/lists/*
+
+# Create a directory for the cron job (if needed)
+RUN mkdir -p /etc/cron.d
+
+# Add the cron job file
+# Here, we're adding a cron job that runs a shell command every minute
+RUN echo "* * * * * root /bin/bash -c 'echo \"Hello, this is a Cron job and it is working!\" >> /var/log/cron.log" && sleep 5
+
+RUN echo "* * * * * root /bin/bash -c 'echo \"Hello, this is a Cron job and it is working!\" >> /var/log/cron.log 2>&1'" > /etc/cron.d/mycron
+
+# Set the correct permissions for the cron job file
+RUN chmod 0644 /etc/cron.d/mycron
+
+# Apply cron job
+RUN crontab /etc/cron.d/mycron
+
+# Start cron in the background
+CMD ["cron", "-f"]
