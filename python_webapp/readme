@@ -1,0 +1,10 @@
+Clone the repository:
+https://github.com/thangacodes/docker_k8s_notes.git
+
+Navigate to the python_webapp folder:
+cd python_webapp
+
+Execute the venv_activate.sh script (shell file).
+It will create a virtual environment as per your specifications and install the required pip3 packages to run the Python web application.
+The script will also automatically open the localhost URL http://localhost:5000/ in your default browser (Chrome, if it's your default).
+Once the webpage is open in the browser, you need to enter the username as "admin" and the password as "password"
