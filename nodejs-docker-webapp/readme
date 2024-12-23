@@ -28,10 +28,11 @@ Example of basic package.json file,
 # File structure:
 .
 ├── Dockerfile
+├── build_run_cont.sh
 ├── index.js
 └── package.json
 
-0 directory, 3 files
+0 directory, 4 files
 
 How do I build Docker images from this?
 $ docker build -t webapp:v1 .
@@ -39,4 +40,8 @@ $ docker run -d -p 5000:5000 --name web1 webapp:v1
 
 Open browsers like Chrome, MS Edge, Safari, or Brave to access the endpoint at localhost on port 5000, where you'll see the web app on the UI.
   http://localhost:5000/
+
+How to automate this entire process using bash script?
+$ chmod +x build_run_cont.sh
+$ ./build_run_cont.sh
 
