@@ -1,0 +1,42 @@
+Node.js:
+========
+It is a powerful and flexible runtime environment for executing JavaScript code server-side.
+RESTful APIs: Node.js is commonly used to build APIs (e.g., REST APIs) for web applications
+
+npm (Node Package Manager):
+===========================
+It is an essential tool for developers working with Node.js. 
+It is both a package manager and an online repository for JavaScript libraries and modules.
+
+package.json:
+==============
+File is a crucial part of any Node.js project. It holds metadata about the project, such as its name, version, and dependencies, and helps manage tasks like installing packages, running scripts, and configuring your development environment.
+It serves as the manifest for your Node.js application and provides npm with the necessary information to install dependencies and run scripts.
+
+Example of basic package.json file,
+{
+  "name": "my-javascript-project",
+  "version": "1.0.0",
+  "description": "A simple WebApplication developed in JavaScript",
+  "main": "index.js",
+  "scripts": {},
+  "keywords": ["node", "npm"],
+  "author": "Thangadurai Murugan",
+  "license": "MIT"
+}
+
+# File structure:
+.
+├── Dockerfile
+├── index.js
+└── package.json
+
+0 directory, 3 files
+
+How do I build Docker images from this?
+$ docker build -t webapp:v1 .
+$ docker run -d -p 5000:5000 --name web1 webapp:v1
+
+Open browsers like Chrome, MS Edge, Safari, or Brave to access the endpoint at localhost on port 5000, where you'll see the web app on the UI.
+  http://localhost:5000/
+
