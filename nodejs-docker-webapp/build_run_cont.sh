@@ -1,5 +1,4 @@
 #!/bin/bash
-
 # Print the script execution time
 echo "The script was executed at: $(date '+%d-%m-%Y %H:%M:%S')"
 
@@ -38,6 +37,8 @@ echo "User has entered: $USER_ANS"
 if [[ "$USER_ANS" == "yes" || "$USER_ANS" == "YES" ]]; then
     echo "Going to stop the container..."
     # Ask for the container ID
+    echo "List out the available running containers.."
+    docker ps -a
     read -p "Enter the container ID (or name) to stop: " CID
     echo "User has entered the container ID: $CID"
     # Stop and remove the container
@@ -45,6 +46,13 @@ if [[ "$USER_ANS" == "yes" || "$USER_ANS" == "YES" ]]; then
     docker stop "${CID}"
     echo "Removing the container with ID: $CID"
     docker rm -f "${CID}"
+    docker images
+    echo "Deleting the image with it's ID.."
+    read -p "Enter the Image ID (or name) to delete:" DOCKER_IMAGE_ID
+    docker rmi -f "${DOCKER_IMAGE_ID}" || { echo "Failed to remove image! Exiting."; exit 1; }
+    sleep 2
+    echo "Cross checking whether the images has deleted or not.."
+    docker images | grep "${DOCKER_IMAGE_ID}" > /dev/null && { echo "Image deletion failed!"; exit 1; } || echo "Image deleted successfully."
 elif [[ "$USER_ANS" == "no" || "$USER_ANS" == "NO" ]]; then
     echo "User chose not to stop the container. Exiting."
 else
