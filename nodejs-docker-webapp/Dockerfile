@@ -14,5 +14,10 @@ COPY . .
 # Expose the port that the app will run on
 EXPOSE 5000
 
+
+# Serve static files (e.g., images, stylesheets) from the 'public' directory
+RUN mkdir -p /usr/src/app/public
+COPY ./public /usr/src/app/public
+
 # Start the application
-CMD ["npm", "start"]
+CMD ["node", "index.js"]
