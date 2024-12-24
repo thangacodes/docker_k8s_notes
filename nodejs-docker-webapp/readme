@@ -28,11 +28,15 @@ Example of basic package.json file,
 # File structure:
 .
 ├── Dockerfile
-├── build_run_cont.sh
+├── build_run_container.sh
 ├── index.js
-└── package.json
+├── locally_start_nodejs.sh
+├── package.json
+└── public
+    └── images
+        └── try-devops.jpeg
 
-0 directory, 4 files
+2 directories, 6 files
 
 How do I build Docker images from this?
 $ docker build -t webapp:v1 .
@@ -44,4 +48,12 @@ Open browsers like Chrome, MS Edge, Safari, or Brave to access the endpoint at l
 How to automate this entire process using bash script?
 $ chmod +x build_run_cont.sh
 $ ./build_run_cont.sh
+
+How to start locally npm server?
+$ chmod +x locally_start_nodejs.sh
+$ ./locally_start_nodejs.sh
+
+Open browsers like Chrome, MS Edge, Safari, or Brave to access the endpoint at localhost on port 5000, where you'll see the web app on the UI.
+  http://localhost:5000/
+
 
