@@ -1,0 +1,14 @@
+This is a simple WebApp deployment using Node.js, along with the file structure and instructions on how to run it locally and how to build and run it via a Docker container.
+
+To build it locally using Node Package Manager, simply run the local_start.sh script, and it will take care of everything.
+To build it docker container using Node Package Manager, simply run the build_run_container.sh, and it will take care of everything.
+
+# File structure
+.
+├── Dockerfile
+├── build_run_container.sh
+├── index.js
+├── local_start.sh
+└── package.json
+
+0 directory, 5 files
